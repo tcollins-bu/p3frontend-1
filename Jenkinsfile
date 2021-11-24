@@ -1,7 +1,6 @@
 pipeline {
   
   agent any {
-    docker { image 'node:latest' }
     
   options {
     skipStagesAfterUnstable()
