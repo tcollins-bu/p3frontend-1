@@ -1,6 +1,6 @@
 pipeline {
   
-  agent {
+  agent any {
     docker { image 'node:latest' }
     
   options {
