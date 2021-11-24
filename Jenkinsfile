@@ -1,13 +1,6 @@
 pipeline {
-
-agent none {
-    
-  options {
-    skipStagesAfterUnstable()
-    disableConcurrentBuilds()
-          }
-    
-  stages {
+agent any {  
+stages {
     
     stage ('Hello World') {
       steps {
