@@ -15,9 +15,6 @@ stages {
       steps { sh 'ng build --prod' }
         }
 
-    stage('Test') {
-
-        }
 
         }
       }
