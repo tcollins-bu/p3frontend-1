@@ -7,8 +7,12 @@ stages {
         echo "hello world"
       }
     }
-     stage('Install') {
+     stage('npm Install') {
       steps { sh 'npm install' }
+        }
+  
+       stage('ng Build') {
+      steps { sh 'ng build --prod' }
         }
 
     stage('Test') {
