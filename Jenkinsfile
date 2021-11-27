@@ -8,7 +8,10 @@ stages {
       }
     }
      stage('npm Install') {
-      steps { sh 'npm install' }
+      steps {sh 'node -v' }
+       steps {sh 'npm prune'}
+       steps {sh 'npm install' }
+       
         }
   
        stage('ng Build') {
