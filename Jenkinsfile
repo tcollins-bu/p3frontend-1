@@ -11,6 +11,7 @@ stages {
     
     stage ('Compile') {
       steps {
+        bat 'Build bat'
         echo "Compiled Success!"
       }
     }
