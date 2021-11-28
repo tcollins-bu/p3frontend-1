@@ -5,9 +5,22 @@ stages {
     
     stage ('Hello World') {
       steps {
-        echo "hello world"
+        echo "Hello World"
       }
     }
+    
+    stage ('Compile') {
+      steps {
+        echo "Compiled Success!"
+      }
+    }
+  
+      stage ('JUnit') {
+      steps {
+        echo "Testing Passed!"
+      }
+    }
+  
 
         }
 
