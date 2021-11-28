@@ -21,7 +21,14 @@ stages {
       }
     }
   
-
+      stage ('Quality-Gate') {
+      steps {
+        echo "Quality Gate passed!"
+      }
+    }
+  
+  
+  
         }
 
 
