@@ -1,5 +1,8 @@
 pipeline {
 agent any 
+  
+node('node') {
+ 
 stages {
     
     stage ('Hello World') {
@@ -10,8 +13,7 @@ stages {
      stage('npm Install') {
        
       sh 'node -v' 
-      sh 'npm prune'
-      sh 'npm install' 
+      sh 'npm install'
        
         }
   
@@ -23,3 +25,4 @@ stages {
         }
       }
 
+}
