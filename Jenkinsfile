@@ -12,7 +12,7 @@ stages {
     stage ('Compile') {
       steps {
         /*bat 'Build bat'*/
-        sh 'npm install'
+        /*sh 'npm install'*/
         echo "Compiled Success!"
       }
     }
