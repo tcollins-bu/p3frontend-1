@@ -9,6 +9,13 @@ stages {
         
       }
     }
+  
+      stage('NPM Install') {
+        withEnv(["NPM_CONFIG_LOGLEVEL=warn"]) {
+            sh 'npm install'
+        }
+    }
+  
     
     stage ('Compile') {
       steps {
@@ -19,6 +26,8 @@ stages {
         echo "Compiled Success!"
       }
     }
+  
+  
   
       stage ('JUnit') {
       steps {
