@@ -3,7 +3,6 @@
 pipeline {
 agent any 
 /*MAKE SURE TO CHECK WHICH BRANCH BEFORE EDITING*/
-  node {  
 stages {
     
     stage ('Hello World') {
@@ -12,11 +11,6 @@ stages {
       }
     }
   
-      stage('NPM Install') {
-        steps {
-            /*sh 'npm install'*/     
-        }
-    }
   
     
     stage ('Compile') {
@@ -50,5 +44,5 @@ stages {
         }
 
 
-        }
+       
 }
