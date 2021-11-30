@@ -1,6 +1,9 @@
+#!groovy
+
 pipeline {
 agent any 
 /*MAKE SURE TO CHECK WHICH BRANCH BEFORE EDITING*/
+  node {  
 stages {
     
     stage ('Hello World') {
@@ -51,3 +54,4 @@ stages {
 
 
         }
+}
