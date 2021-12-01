@@ -131,3 +131,20 @@ table {
 input {
   outline: none;
 }
+
+button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  color: inherit;
+}
+
+a:visited {
+  color: inherit;
+}

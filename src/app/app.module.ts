@@ -1,28 +1,22 @@
-// Imported modules
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-// User created components
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
-import { PostfeedComponent } from './components/postfeed/postfeed.component';
-import { EditComponent } from './components/profile/edit/edit.component';
-import { ProfileComponent } from './components/profile/page/profile.component';
-import { CreatepostComponent } from './components/createpost/createpost.component';
-import { PostItemComponent } from './components/post-item/post-item.component';
-import { CommentsComponent } from './components/comments/comments.component';
+import { HeaderComponent } from './components/header/header.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostfeedComponent,
-    CreatepostComponent,
-    PostItemComponent,
-    CommentsComponent,
-    EditComponent,
-    ProfileComponent,
+    HeaderComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
