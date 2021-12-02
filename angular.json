@@ -28,7 +28,12 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.scss"],
-            "scripts": ["src/assets/JS/modal.js", "src/assets/JS/sidepanel.js"]
+
+            "scripts": [
+              "src/assets/JS/modal.js",
+              "src/assets/JS/reactionClick.js",
+              "src/assets/JS/sidepanel.js"
+            ]
           },
           "configurations": {
             "production": {
