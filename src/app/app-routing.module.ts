@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { RegisterComponent } from './components/register/register.component';
+
 import { PostfeedComponent } from './components/postfeed/postfeed.component';
 
 const routes: Routes = [
@@ -12,6 +13,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'feed', component: PostfeedComponent },
 ];
+
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

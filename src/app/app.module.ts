@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+
 import { PostfeedComponent } from './components/postfeed/postfeed.component';
 import { PostItemComponent } from './components/post-item/post-item.component';
 import { CreateCommentComponent } from './components/create-comment/create-comment.component';
@@ -17,6 +18,7 @@ import { UserPanelComponent } from './components/user-panel/user-panel.component
 import { CommentsComponent } from './components/comments/comments.component';
 import { FollowingComponent } from './components/following/following.component';
 import { FollowButtonComponent } from './components/follow-button/follow-button.component';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { FollowButtonComponent } from './components/follow-button/follow-button.
     CommentsComponent,
     FollowingComponent,
     FollowButtonComponent,
+
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
