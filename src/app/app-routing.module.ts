@@ -6,8 +6,16 @@ import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { RegisterComponent } from './components/register/register.component';
 
-//Temporary routes for development
-const routes: Routes = [{ path: '', component: LoginComponent }];
+import { PostfeedComponent } from './components/postfeed/postfeed.component';
+
+const routes: Routes = [
+  { path: '', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'feed', component: PostfeedComponent },
+];
+
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
