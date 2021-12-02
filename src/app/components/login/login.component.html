@@ -1,8 +1,7 @@
-<app-side-panel></app-side-panel>
 <div class="login__page-wrapper">
-  <div class="login__page__header-container">
+  <!-- <div class="login__page__header-container">
     <app-header></app-header>
-  </div>
+  </div> -->
   <div class="login-container">
     <div class="login__card">
       <div class="login__card-header">
@@ -21,47 +20,44 @@
           #f="ngForm"
           novalidate
         >
-          
-            <label for="username">Username </label>
-            <input
-              type="text"
-              class="form-control"
-              name="username"
-              [(ngModel)]="form.username"
-              required
-              #username="ngModel"
-            />
-            <div
-              class="alert alert-danger"
-              role="alert"
-              *ngIf="username.errors && f.submitted"
-            >
-              Username is required!
-          
+          <label for="username">Username </label>
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            [(ngModel)]="form.username"
+            required
+            #username="ngModel"
+          />
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="username.errors && f.submitted"
+          >
+            Username is required!
           </div>
-          <div class="form-group login">
-            <label for="password">Password </label>
-            <input
-              type="password"
-              class="form-control"
-              name="password"
-              [(ngModel)]="form.password"
-              required
-              minlength="6"
-              #password="ngModel"
-            />
-            <div
-              class="alert alert-danger"
-              role="alert"
-              *ngIf="password.errors && f.submitted"
-            >
-              <div>Password is required</div>
-              <div>Password must be at least 6 characters</div>
-            </div>
+
+          <label for="password">Password </label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            [(ngModel)]="form.password"
+            required
+            minlength="6"
+            #password="ngModel"
+          />
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="password.errors && f.submitted"
+          >
+            <div>Password is required</div>
+            <div>Password must be at least 6 characters</div>
           </div>
-          <div class="form-group">
-            <button class="btn btn-primary btn-block">Login</button>
-          </div>
+
+          <button>Login</button>
+
           <div class="form-group">
             <div
               class="alert alert-danger"
@@ -72,6 +68,11 @@
             </div>
           </div>
         </form>
+      </div>
+      <div class="login__card__register-container">
+        <a (click)="registerRedirect()" class="login__card__register-link"
+          >Don't have an account? Sign up here</a
+        >
       </div>
       <div class="alert alert-success" *ngIf="isLoggedIn">
         Logged in as {{ roles }}.

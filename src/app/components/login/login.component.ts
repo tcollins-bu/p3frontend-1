@@ -29,6 +29,10 @@ export class LoginComponent implements OnInit {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
     }
+
+    if (this.isLoggedIn) {
+      this.router.navigate(['feed']);
+    }
   }
 
   onSubmit(): void {
@@ -54,5 +58,9 @@ export class LoginComponent implements OnInit {
 
   reloadPage(): void {
     window.location.reload();
+  }
+
+  registerRedirect(): void {
+    this.router.navigate(['register']);
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Feed } from 'src/app/Feed';
 import { Post } from 'src/app/Post';
 import { PostService } from 'src/app/services/post.service';
@@ -14,7 +15,7 @@ export class PostfeedComponent implements OnInit {
   tId: number = 0;
   feed: Feed | undefined;
 
-  constructor(private pService: PostService) {}
+  constructor(private pService: PostService, private router: Router) {}
 
   ngOnInit(): void {
     this.getData();
