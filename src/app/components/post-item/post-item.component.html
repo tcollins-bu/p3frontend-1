@@ -6,8 +6,8 @@
         src="assets/Img/Users/user-solid-blue.png"
         alt=""
       />
-      <a class="post__user__name" href="#">User</a>
-      <p>{{ post?.postDate }}</p>
+      <a class="post__user__name" href="#">{{ fullName }}</a>
+      <p>{{ post?.postDate | date }}</p>
     </div>
     <div class="post__item__card__content-container">
       <p class="post__item__card-para">{{ post?.postContent }}</p>

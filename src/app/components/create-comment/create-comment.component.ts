@@ -16,6 +16,7 @@ export class CreateCommentComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
+    let uId = Number(localStorage.getItem('userId'));
     if (!this.content && !this.image) {
       alert('Please add a comment or a pic');
       return;
@@ -25,7 +26,7 @@ export class CreateCommentComponent implements OnInit {
       postContent: this.content,
       postDate: new Date(),
       feedId: 4,
-      usersId: 1,
+      usersId: uId,
       imageUrl: this.image,
       type: 'comment',
     };

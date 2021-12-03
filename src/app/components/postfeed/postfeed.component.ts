@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Feed } from 'src/app/Feed';
+import { Users } from 'src/app/models/user';
 import { Post } from 'src/app/Post';
 import { PostService } from 'src/app/services/post.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-postfeed',
@@ -14,8 +16,9 @@ export class PostfeedComponent implements OnInit {
   comments: Post[] = [];
   tId: number = 0;
   feed: Feed | undefined;
+  user!: Users;
 
-  constructor(private pService: PostService, private router: Router) {}
+  constructor(private pService: PostService, private uService: UserService) {}
 
   ngOnInit(): void {
     this.getData();
@@ -25,6 +28,18 @@ export class PostfeedComponent implements OnInit {
       this.posts = posts;
       this.posts.reverse();
       this.filterPosts(posts);
+      this.getUser();
+    });
+  }
+
+  private getUser() {
+    let user = sessionStorage.getItem('auth-user');
+    let userId = user?.charAt(6);
+    this.uService.getUserById(Number(userId)).subscribe((lUser: Users) => {
+      this.user = lUser;
+      localStorage.setItem('firstName', this.user.firstName);
+      localStorage.setItem('lastName', this.user.lastName);
+      localStorage.setItem('userId', this.user.userId.toString());
     });
   }
 

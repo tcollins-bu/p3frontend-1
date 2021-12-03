@@ -1,8 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Dislikes } from 'src/app/Dislikes';
 import { Likes } from 'src/app/Likes';
+import { Users } from 'src/app/models/user';
 import { Post } from 'src/app/Post';
 import { LikeDislikeService } from 'src/app/services/like-dislike.service';
+import { PostService } from 'src/app/services/post.service';
+import { UserService } from 'src/app/services/user.service';
 
 declare const reactionClick: any;
 
@@ -14,15 +17,25 @@ declare const reactionClick: any;
 export class CommentsComponent implements OnInit {
   @Input() comment: Post;
   @Input() post: Post;
+  posts: Post[] = [];
+  users: Users[] = [];
+  comments: Post[] = [];
   likes: Likes[] = [];
   dislikes: Dislikes[] = [];
   commentLikes: Likes[] = [];
   commentDislikes: Dislikes[] = [];
   numCommentLikes: number = 0;
   numCommentDislikes: number = 0;
-  userId: number = 1;
+  userId: number = Number(localStorage.getItem('userId'));
+  firstName: string = ''; //localStorage.getItem('firstName');
+  lastName: string = ''; // localStorage.getItem('lastName');
+  fullName: string = ''; //`${this.firstName} ${this.lastName}`;
 
-  constructor(private lService: LikeDislikeService) {}
+  constructor(
+    private lService: LikeDislikeService,
+    private uService: UserService,
+    private pService: PostService
+  ) {}
 
   ngOnInit(): void {
     this.getData();
@@ -36,10 +49,31 @@ export class CommentsComponent implements OnInit {
   }
 
   getData() {
-    this.getCommentLikes();
-    this.getCommentDislikes();
+    this.pService.getPosts().subscribe((posts: Post[]) => {
+      this.posts = posts;
+      this.filterPosts(posts);
+      this.getCommentLikes();
+      this.getCommentDislikes();
+      this.getUsersInfo();
+    });
+
     // console.log(this.commentLikes);
     // console.log(this.commentDislikes);
+  }
+
+  private getUsersInfo() {
+    this.uService.getUsers().subscribe((users: Users[]) => {
+      this.users = users;
+      this.comments.forEach((p) => {
+        if (this.comment.usersId === p.usersId) {
+          this.uService.getUserById(p.usersId).subscribe((user: Users) => {
+            this.firstName = user.firstName;
+            this.lastName = user.lastName;
+            this.fullName = `${this.firstName} ${this.lastName}`;
+          });
+        }
+      });
+    });
   }
 
   getCommentLikes() {
@@ -140,5 +174,16 @@ export class CommentsComponent implements OnInit {
         }
       }
     }
+  }
+
+  private filterPosts(posts: Post[]) {
+    this.posts = posts.filter((p) => {
+      return p.type == 'post';
+    });
+    this.comments = posts
+      .filter((p) => {
+        return p.type != 'post';
+      })
+      .reverse();
   }
 }

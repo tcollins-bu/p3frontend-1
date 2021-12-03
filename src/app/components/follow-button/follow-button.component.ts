@@ -1,6 +1,6 @@
 import { Component, Injectable, OnInit, Input } from '@angular/core';
 import { IFollower } from 'src/app/models/follower';
-import { FollowerService } from './services/follower.service';
+import { FollowerService } from '../../services/follower.service';
 
 @Component({
   selector: 'follow_button',
@@ -100,7 +100,7 @@ export class FollowButtonComponent implements OnInit {
   checkFollowerStatus(activeUserId: number, profileId: number): boolean {
     this.service
       .getFollowedByUserAndProfileId(profileId, activeUserId) //Get all users the acitve user is following
-      .subscribe((followedUsers) => {
+      .subscribe((followedUsers: IFollower) => {
         try {
           this.follower.id = followedUsers.id; //Seting the Follow Object instance id
           this.follower = followedUsers;
