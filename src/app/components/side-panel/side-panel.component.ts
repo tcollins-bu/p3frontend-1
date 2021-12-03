@@ -16,6 +16,12 @@ export class SidePanelComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  viewProfile() {
+    console.log('Navigate to profile page');
+
+    //this.router.navigate['userProfile'];
+  }
+
   logout(): void {
     this.tokenStorageService.signOut();
     this.router.navigate(['']);
