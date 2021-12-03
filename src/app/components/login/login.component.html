@@ -5,11 +5,12 @@
   <div class="login-container">
     <div class="login__card">
       <div class="login__card-header">
-        <img
+        <!-- <img
           id="profile-img"
           src="assets\Img\Logo\rev-logo.png"
           class="profile-img-card"
-        />
+        /> -->
+        <h2 class="login__card__header-text">MyRev</h2>
       </div>
       <div class="login__card__form-container">
         <form
@@ -68,12 +69,13 @@
             </div>
           </div>
         </form>
+        <div class="login__card__register-container">
+          <a (click)="registerRedirect()" class="login__card__register-link"
+            >Don't have an account? Sign up here</a
+          >
+        </div>
       </div>
-      <div class="login__card__register-container">
-        <a (click)="registerRedirect()" class="login__card__register-link"
-          >Don't have an account? Sign up here</a
-        >
-      </div>
+
       <div class="alert alert-success" *ngIf="isLoggedIn">
         Logged in as {{ roles }}.
       </div>

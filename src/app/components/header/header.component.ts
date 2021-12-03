@@ -26,12 +26,12 @@ export class HeaderComponent implements OnInit {
     }
 
     const outerWrapper = $('.side__panel-outer-wrapper');
-    const hamburger = $('.hamburger-container');
     const sidepanel = $('.side__panel-wrapper');
     const closeBtn = $('.close-side-panel');
-    const underlines = document.querySelectorAll('.underline');
-    const links = document.querySelectorAll('.list__item__link');
     const logoutBTN = $('.logoutBTN');
+
+    const links = document.querySelectorAll('.list__item__link');
+    const underlines = document.querySelectorAll('.underline');
 
     sidepanel.style.width = '60%';
     outerWrapper.style.width = '100%';
@@ -52,5 +52,14 @@ export class HeaderComponent implements OnInit {
       sidepanel.style.width = '0%';
       outerWrapper.style.width = '0%';
     });
+
+    for (let i = 0; i < links.length; i++) {
+      links[i].addEventListener('mouseenter', () => {
+        underlines[i].classList.add('underline-full-width');
+      });
+      links[i].addEventListener('mouseleave', () => {
+        underlines[i].classList.remove('underline-full-width');
+      });
+    }
   }
 }

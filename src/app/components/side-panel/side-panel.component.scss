@@ -57,5 +57,9 @@
   height: 5px;
   background-color: white;
   width: 0;
-  transition: 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+.underline-full-width {
+  width: 100%;
 }
