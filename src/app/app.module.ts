@@ -18,6 +18,8 @@ import { CommentsComponent } from './components/comments/comments.component';
 import { FollowingComponent } from './components/following/following.component';
 import { FollowButtonComponent } from './components/follow-button/follow-button.component';
 
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +35,8 @@ import { FollowButtonComponent } from './components/follow-button/follow-button.
     CommentsComponent,
     FollowingComponent,
     FollowButtonComponent,
+
+    SearchBarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
