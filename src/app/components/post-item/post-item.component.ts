@@ -1,9 +1,11 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Dislikes } from 'src/app/Dislikes';
 import { Likes } from 'src/app/Likes';
+import { Users } from 'src/app/models/user';
 import { Post } from 'src/app/Post';
 import { LikeDislikeService } from 'src/app/services/like-dislike.service';
 import { PostService } from 'src/app/services/post.service';
+import { UserService } from 'src/app/services/user.service';
 
 declare const reactionClick: any;
 
@@ -14,23 +16,28 @@ declare const reactionClick: any;
 })
 export class PostItemComponent implements OnInit {
   posts: Post[] = [];
+  users: Users[] = [];
   comments: Post[] = [];
-  numComments: number;
-  numLikes: number;
-  numDislikes: number;
-  userId: number = 1;
+  numComments: number = 0;
+  numLikes: number = 0;
+  numDislikes: number = 0;
+  userId: number = Number(localStorage.getItem('userId'));
   likes: Likes[] = [];
   dislikes: Dislikes[] = [];
   postLikes: Likes[] = [];
   postDislikes: Dislikes[] = [];
+  firstName: string = ''; //localStorage.getItem('firstName');
+  lastName: string = ''; // localStorage.getItem('lastName');
+  fullName: string = ''; //`${this.firstName} ${this.lastName}`;
 
-  @Input() post: Post;
+  @Input() post!: Post;
   @Output() onLikeClick: EventEmitter<Likes> = new EventEmitter();
   @Output() onDislikeClick: EventEmitter<Dislikes> = new EventEmitter();
 
   constructor(
     private pService: PostService,
-    private lService: LikeDislikeService
+    private lService: LikeDislikeService,
+    private uService: UserService
   ) {}
   toggle: boolean = true;
 
@@ -40,24 +47,41 @@ export class PostItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.getData();
+
     reactionClick();
     this.postLikes = [...new Set(this.postLikes)];
     this.postDislikes = [...new Set(this.postDislikes)];
   }
 
   private getData() {
-    this.pService.getPosts().subscribe((posts) => {
+    this.pService.getPosts().subscribe((posts: Post[]) => {
       this.posts = posts;
       this.posts.reverse();
       this.filterPosts(posts);
       this.numComments = this.getNumOfComments();
       this.getLikes();
       this.getDislikes();
+      this.getUsersInfo();
+    });
+  }
+
+  private getUsersInfo() {
+    this.uService.getUsers().subscribe((users: Users[]) => {
+      this.users = users;
+      this.posts.forEach((p) => {
+        if (this.post.usersId === p.usersId) {
+          this.uService.getUserById(p.usersId).subscribe((user: Users) => {
+            this.firstName = user.firstName;
+            this.lastName = user.lastName;
+            this.fullName = `${this.firstName} ${this.lastName}`;
+          });
+        }
+      });
     });
   }
 
   getLikes() {
-    this.lService.getLikes().subscribe((likes) => {
+    this.lService.getLikes().subscribe((likes: Likes[]) => {
       this.likes = likes;
       let postLikes = 0;
       this.likes.forEach((l) => {
@@ -71,7 +95,7 @@ export class PostItemComponent implements OnInit {
   }
 
   getDislikes() {
-    this.lService.getDislikes().subscribe((dislikes) => {
+    this.lService.getDislikes().subscribe((dislikes: Dislikes[]) => {
       this.dislikes = dislikes;
       let postDisLikes = 0;
       this.dislikes.forEach((d) => {
@@ -100,7 +124,7 @@ export class PostItemComponent implements OnInit {
     }
 
     if (this.postLikes.length < 1 || !hasLiked) {
-      this.lService.addLike(like).subscribe((like) => {
+      this.lService.addLike(like).subscribe((like: Likes) => {
         this.ngOnInit();
       });
     }
@@ -137,7 +161,7 @@ export class PostItemComponent implements OnInit {
     }
 
     if (this.postDislikes.length < 1 || !hasDisliked) {
-      this.lService.addDislike(dislike).subscribe((like) => {
+      this.lService.addDislike(dislike).subscribe((dislike: Dislikes) => {
         this.ngOnInit();
       });
     }
