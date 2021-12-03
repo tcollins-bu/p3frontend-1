@@ -19,5 +19,6 @@ export class SidePanelComponent implements OnInit {
   logout(): void {
     this.tokenStorageService.signOut();
     this.router.navigate(['']);
+    localStorage.clear();
   }
 }

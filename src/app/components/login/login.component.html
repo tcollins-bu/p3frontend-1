@@ -3,7 +3,7 @@
     <app-header></app-header>
   </div> -->
   <div class="login-container">
-    <div class="login__card">
+    <div class="login__card" [ngClass]="{ slideUpAnimation: isLogin() }">
       <div class="login__card-header">
         <!-- <img
           id="profile-img"

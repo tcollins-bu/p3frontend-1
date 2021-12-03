@@ -63,4 +63,8 @@ export class LoginComponent implements OnInit {
   registerRedirect(): void {
     this.router.navigate(['register']);
   }
+
+  isLogin() {
+    return this.router.url === '/';
+  }
 }

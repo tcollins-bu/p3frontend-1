@@ -3,7 +3,7 @@
     <app-header></app-header>
   </div> -->
   <div class="register-container">
-    <div class="register__card">
+    <div class="register__card" [ngClass]="{ slideUpAnimation: isRegister() }">
       <div class="register__card-header">
         <!-- <img
           id="profile-img"
