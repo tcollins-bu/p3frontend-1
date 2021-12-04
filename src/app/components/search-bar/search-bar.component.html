@@ -10,7 +10,9 @@
   </form>
   <div class="user__list">
     <div class="list" *ngFor="let user of users | filter: searchName">
-      {{ user.username }}
+      <button type="button" (click)="getProfile(user.userId)">
+        {{ user.username }}
+      </button>
     </div>
   </div>
 </div>

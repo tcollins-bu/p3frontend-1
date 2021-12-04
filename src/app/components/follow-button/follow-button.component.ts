@@ -1,6 +1,7 @@
 import { Component, Injectable, OnInit, Input } from '@angular/core';
 import { IFollower } from 'src/app/models/follower';
 import { FollowerService } from '../../services/follower.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'follow_button',
@@ -8,8 +9,10 @@ import { FollowerService } from '../../services/follower.service';
   styleUrls: ['./follow-button.component.scss'],
 })
 export class FollowButtonComponent implements OnInit {
-  @Input('profileId') profileId = 0;
-  @Input('activeUsersId') activeUsersId = 0;
+  @Input('profileId') profileId = this.route.snapshot.params['userId'];
+  @Input('activeUsersId') activeUsersId = Number(
+    localStorage.getItem('userId')
+  );
   isVisible: boolean = false; //Checks to see if active user's id matches profile id
   isFollowing: boolean = false; //Toggles between '+' and 'Unfollow' depending on current state
   follower: IFollower = {
@@ -19,7 +22,8 @@ export class FollowButtonComponent implements OnInit {
   };
 
   constructor(
-    public service: FollowerService //Injecting Follower Service
+    public service: FollowerService, //Injecting Follower Service
+    public route: ActivatedRoute
   ) {}
 
   ngOnInit() {

@@ -23,6 +23,7 @@ import { ProfileComponent } from './components/profile/profile/profile.component
 import { UserProfileComponent } from './components/profile/user-profile/user-profile.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { FilterPipe } from './services/filter.pipe';
+import { FollowerService } from './services/follower.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { FilterPipe } from './services/filter.pipe';
     FilterPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-  providers: [],
+  providers: [FollowerService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

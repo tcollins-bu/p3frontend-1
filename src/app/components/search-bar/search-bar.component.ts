@@ -17,8 +17,7 @@ export class SearchBarComponent implements OnInit {
   constructor(
     private SearchBarService: SearchBarService,
     private router: Router
-  ) //private filter: FilterPipe
-  {
+  ) {
     this.changeText = false;
   }
 

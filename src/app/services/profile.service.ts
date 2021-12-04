@@ -58,7 +58,7 @@ export class ProfileService {
 
   // Get user by userId
   public getUserById(id: number): Observable<Users> {
-    return this.http.get<Users>(baseApiUrl + 'users/users/' + id);
+    return this.http.get<Users>(baseApiUrl + '/findUserById/' + id);
   }
 
   // Update user profile
@@ -68,7 +68,6 @@ export class ProfileService {
       user,
       httpOptions
     );
-
   }
   // Update profile photo
 }
