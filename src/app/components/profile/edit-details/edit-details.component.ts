@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Users } from 'src/app/models/user';
+
 import { ProfileService } from 'src/app/services/profile.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
+
 
 @Component({
   selector: 'app-edit-details',
@@ -49,4 +51,5 @@ export class EditDetailsComponent implements OnInit {
       this.user = user;
     });
   }
+
 }

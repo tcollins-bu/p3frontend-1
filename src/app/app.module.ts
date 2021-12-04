@@ -21,6 +21,9 @@ import { EditDetailsComponent } from './components/profile/edit-details/edit-det
 import { EditPhotoComponent } from './components/profile/edit-photo/edit-photo.component';
 import { ProfileComponent } from './components/profile/profile/profile.component';
 import { UserProfileComponent } from './components/profile/user-profile/user-profile.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +43,7 @@ import { UserProfileComponent } from './components/profile/user-profile/user-pro
     EditPhotoComponent,
     ProfileComponent,
     UserProfileComponent,
+    SearchBarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

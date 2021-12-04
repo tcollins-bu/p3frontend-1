@@ -1,3 +1,4 @@
+
 import { Component, Input, OnInit } from '@angular/core';
 import { ProfileService } from 'src/app/services/profile.service';
 import { Users } from 'src/app/models/user';
@@ -8,6 +9,7 @@ import { Observable } from 'rxjs';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { FollowerService } from 'src/app/services/follower.service';
 import { IFollower } from 'src/app/models/follower';
+
 
 @Component({
   selector: 'app-profile',
@@ -151,5 +153,6 @@ export class ProfileComponent implements OnInit {
     }
 
     this.isFollowing = !this.isFollowing;
+
   }
 }

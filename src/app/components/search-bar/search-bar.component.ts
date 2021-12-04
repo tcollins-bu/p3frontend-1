@@ -1,21 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Users } from 'src/app/models/user';
-import { SearchBarService } from './services/search-bar.service';
-import { FilterPipe } from './services/filter.pipe';
+import { SearchBarService } from 'src/app/services/search-bar.service';
+import { FilterPipe } from 'src/app/services/filter.pipe';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
-  styleUrls: ['./search-bar.component.scss']
+
+  styleUrls: ['./search-bar.component.scss'],
 })
 export class SearchBarComponent implements OnInit {
-
   users!: Users[];
-  searchName:string="";
+  searchName: string = '';
   changeText: boolean;
 
-  constructor(private SearchBarService: SearchBarService, private router: Router) { 
+  constructor(
+    private SearchBarService: SearchBarService,
+    private router: Router
+  ) {
     this.changeText = false;
   }
 
@@ -34,3 +37,4 @@ export class SearchBarComponent implements OnInit {
   }
 
 }
+

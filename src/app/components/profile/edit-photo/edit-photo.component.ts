@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Users } from 'src/app/models/user';
+
 import { ProfileService } from 'src/app/services/profile.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
@@ -15,6 +16,7 @@ export class EditPhotoComponent implements OnInit {
   user!: Users;
   selectedFiles!: FileList;
 
+
   constructor(
     private profileService: ProfileService,
     private route: ActivatedRoute,
@@ -24,6 +26,7 @@ export class EditPhotoComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.tokenService.getUser();
+
     this.userId = this.route.snapshot.params['userId'];
   }
 
@@ -35,8 +38,10 @@ export class EditPhotoComponent implements OnInit {
 
       reader.onload = (event) => {
         this.user.photo = event.target?.result as string;
+
       };
       this.profileService.updateProfile(this.user);
     }
   }
+
 }

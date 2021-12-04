@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { catchError, Observable, tap } from 'rxjs';
+
 import {
   HttpClient,
   HttpEvent,
@@ -67,6 +68,7 @@ export class ProfileService {
       user,
       httpOptions
     );
+
   }
   // Update profile photo
 }
