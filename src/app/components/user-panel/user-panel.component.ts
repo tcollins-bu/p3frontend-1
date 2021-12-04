@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Users } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user-panel',
@@ -6,20 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-panel.component.scss'],
 })
 export class UserPanelComponent implements OnInit {
-  firstName: string = null; // localStorage.getItem('firstName');
-  lastName: string = null; //localStorage.getItem('lastName');
-  fullName: string = null; //`${this.firstName} ${this.lastName}`;
-  constructor() {}
+  user: Users;
+  fullName: string = null;
+  age: number;
+  job: string;
+  constructor(private uService: UserService) {}
 
   ngOnInit(): void {
-    this.getName();
+    this.getUser();
   }
 
-  getName() {
+  getUser() {
     setTimeout(() => {
-      this.firstName = localStorage.getItem('firstName');
-      this.lastName = localStorage.getItem('lastName');
-      this.fullName = `${this.firstName} ${this.lastName}`;
-    }, 100);
+      this.uService
+        .getUserById(Number(localStorage.getItem('userId')))
+        .subscribe((user) => {
+          this.user = user;
+          this.fullName = `${this.user.firstName} ${this.user.lastName}`;
+          this.age = this.user.age;
+          this.job = this.user.jobTitle;
+        });
+    }, 10);
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Users } from 'src/app/models/user';
 import { Post } from 'src/app/Post';
 import { PostService } from 'src/app/services/post.service';
 
@@ -10,6 +11,7 @@ import { PostService } from 'src/app/services/post.service';
 export class CreateCommentComponent implements OnInit {
   content: string = '';
   image: string = '';
+  user: Users;
   @Output() onAddComment: EventEmitter<Post> = new EventEmitter();
   constructor(private pService: PostService) {}
 

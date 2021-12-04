@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./side-panel.component.scss'],
 })
 export class SidePanelComponent implements OnInit {
+  id = Number(localStorage.getItem('userId'));
   constructor(
     private tokenStorageService: TokenStorageService,
     private router: Router
@@ -17,9 +18,10 @@ export class SidePanelComponent implements OnInit {
   ngOnInit(): void {}
 
   viewProfile() {
-    console.log('Navigate to profile page');
-
-    //this.router.navigate['userProfile'];
+    this.router.navigate([
+      'profile',
+      { userId: Number(localStorage.getItem('userId')) },
+    ]);
   }
 
   logout(): void {

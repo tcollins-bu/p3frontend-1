@@ -4,13 +4,18 @@
     <div class="side__panel__content-container">
       <ul>
         <li>
-          <a class="list__item__link" href="#" (click)="viewProfile()"
+          <a
+            class="list__item__link"
+            [routerLink]="['view-profile', id]"
+            routerLinkActive="router-link-active"
             >View Profile</a
           >
           <span class="underline"></span>
         </li>
         <li>
-          <a class="list__item__link" href="#">Edit Profile</a>
+          <a class="list__item__link" [routerLink]="['edit-profile']"
+            >Edit Profile</a
+          >
           <span class="underline"></span>
         </li>
         <li>
