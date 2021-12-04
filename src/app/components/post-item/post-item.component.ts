@@ -29,6 +29,7 @@ export class PostItemComponent implements OnInit {
   firstName: string = ''; //localStorage.getItem('firstName');
   lastName: string = ''; // localStorage.getItem('lastName');
   fullName: string = ''; //`${this.firstName} ${this.lastName}`;
+  photo: string;
 
   @Input() post!: Post;
   @Output() onLikeClick: EventEmitter<Likes> = new EventEmitter();
@@ -74,6 +75,7 @@ export class PostItemComponent implements OnInit {
             this.firstName = user.firstName;
             this.lastName = user.lastName;
             this.fullName = `${this.firstName} ${this.lastName}`;
+            this.photo = user.photo;
           });
         }
       });

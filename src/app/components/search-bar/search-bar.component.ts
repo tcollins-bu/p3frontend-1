@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
+
   styleUrls: ['./search-bar.component.scss'],
 })
 export class SearchBarComponent implements OnInit {
@@ -23,15 +24,17 @@ export class SearchBarComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUsers();
+
+  }
+ 
+  getProfile(userId: number): void{
+    this.router.navigate(['profile', userId])
   }
 
-  Profile(userId: number): void {
-    this.router.navigate(['profile', userId]);
+
+  private getUsers(){
+    this.SearchBarService.getUsersList().subscribe(data=>{this.users=data})
   }
 
-  private getUsers() {
-    this.SearchBarService.getUsersList().subscribe((data) => {
-      this.users = data;
-    });
-  }
 }
+
