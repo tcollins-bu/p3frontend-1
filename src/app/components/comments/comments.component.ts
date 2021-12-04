@@ -30,7 +30,7 @@ export class CommentsComponent implements OnInit {
   firstName: string = ''; //localStorage.getItem('firstName');
   lastName: string = ''; // localStorage.getItem('lastName');
   fullName: string = ''; //`${this.firstName} ${this.lastName}`;
-
+  photo: string;
   constructor(
     private lService: LikeDislikeService,
     private uService: UserService,
@@ -70,6 +70,7 @@ export class CommentsComponent implements OnInit {
             this.firstName = user.firstName;
             this.lastName = user.lastName;
             this.fullName = `${this.firstName} ${this.lastName}`;
+            this.photo = user.photo;
           });
         }
       });

@@ -22,7 +22,7 @@ import { EditPhotoComponent } from './components/profile/edit-photo/edit-photo.c
 import { ProfileComponent } from './components/profile/profile/profile.component';
 import { UserProfileComponent } from './components/profile/user-profile/user-profile.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
-
+import { FilterPipe } from './services/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -44,6 +44,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     ProfileComponent,
     UserProfileComponent,
     SearchBarComponent,
+    FilterPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
