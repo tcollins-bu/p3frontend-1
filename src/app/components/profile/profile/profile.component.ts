@@ -1,4 +1,3 @@
-
 import { Component, Input, OnInit } from '@angular/core';
 import { ProfileService } from 'src/app/services/profile.service';
 import { Users } from 'src/app/models/user';
@@ -9,7 +8,6 @@ import { Observable } from 'rxjs';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { FollowerService } from 'src/app/services/follower.service';
 import { IFollower } from 'src/app/models/follower';
-
 
 @Component({
   selector: 'app-profile',
@@ -22,8 +20,10 @@ export class ProfileComponent implements OnInit {
   temp: any;
   userId!: number;
   // Follow button init vars
-  @Input('profileId') profileId!: number;
-  @Input('activeUsersId') activeUsersId!: number;
+  //@Input('profileId')
+  profileId!: number;
+  //@Input('activeUsersId')
+  activeUsersId!: number;
   isVisible: boolean = false; //Checks to see if active user's id matches profile id
   isFollowing: boolean = false; //Toggles between 'Follow' and 'Unfollow' depending on current state
   follower!: IFollower;
@@ -41,6 +41,8 @@ export class ProfileComponent implements OnInit {
     this.temp = this.profileService.getUserById(+this.userId);
     this.temp.subscribe((data: {}) => {
       this.targetUser = data;
+      console.log(this.targetUser.userId);
+      this.profileId = this.userId;
     });
     this.currentUser = this.tokenService.getUser();
     // Follower button init
@@ -153,6 +155,5 @@ export class ProfileComponent implements OnInit {
     }
 
     this.isFollowing = !this.isFollowing;
-
   }
 }

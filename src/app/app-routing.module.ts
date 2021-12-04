@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'feed', component: PostfeedComponent },
   { path: 'edit-profile', component: EditDetailsComponent },
   { path: 'view-profile/:userId', component: UserProfileComponent },
+  { path: 'profile/:userId', component: ProfileComponent },
 ];
 
 @NgModule({
