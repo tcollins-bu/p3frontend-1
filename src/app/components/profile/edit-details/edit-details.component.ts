@@ -7,7 +7,6 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 
-
 @Component({
   selector: 'app-edit-details',
   templateUrl: './edit-details.component.html',
@@ -47,9 +46,10 @@ export class EditDetailsComponent implements OnInit {
   }
 
   getUser() {
-    this.uService.getUserById(this.userId).subscribe((user) => {
-      this.user = user;
-    });
+    setTimeout(() => {
+      this.uService.getUserById(this.userId).subscribe((user) => {
+        this.user = user;
+      });
+    }, 10);
   }
-
 }

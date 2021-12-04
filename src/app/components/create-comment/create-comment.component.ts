@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Users } from 'src/app/models/user';
 import { Post } from 'src/app/Post';
 import { PostService } from 'src/app/services/post.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-create-comment',
@@ -13,9 +14,11 @@ export class CreateCommentComponent implements OnInit {
   image: string = '';
   user: Users;
   @Output() onAddComment: EventEmitter<Post> = new EventEmitter();
-  constructor(private pService: PostService) {}
+  constructor(private pService: PostService, private uService: UserService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getUser();
+  }
 
   onSubmit() {
     let uId = Number(localStorage.getItem('userId'));
@@ -36,5 +39,13 @@ export class CreateCommentComponent implements OnInit {
     this.onAddComment.emit(newComment);
     this.content = '';
     this.image = '';
+  }
+
+  getUser() {
+    setTimeout(() => {
+      this.uService
+        .getUserById(Number(localStorage.getItem('userId')))
+        .subscribe((user) => (this.user = user));
+    }, 10);
   }
 }
