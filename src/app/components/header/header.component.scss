@@ -35,31 +35,6 @@
   }
 }
 
-.header__search-container {
-  display: flex;
-  align-items: center;
-}
-
-.header__search__form {
-  & > input {
-    padding: 0.5rem;
-    height: 100%;
-  }
-
-  & > button {
-    color: $white;
-    background-color: $orange;
-    border: none;
-    outline: none;
-    margin-left: 1rem;
-    padding: 0.5rem;
-
-    &:hover {
-      background-color: $light-gray;
-    }
-  }
-}
-
 .hamburger-container {
   height: 2rem;
   width: 2rem;

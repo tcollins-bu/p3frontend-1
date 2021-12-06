@@ -1,0 +1,45 @@
+@import "src/colorVariables";
+
+.profile__page-wrapper {
+  min-height: calc(100vh - 4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.profile__page__profile-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__page__profile__img-comtainer {
+  outline: 1px solid $blue;
+  & > img {
+    max-height: 20rem;
+    border-radius: 50%;
+    border: 1rem solid $orange;
+  }
+}
+
+.profile__page__user-name {
+  text-align: center;
+  font-size: 3rem;
+  font-family: "FuturaHeavy";
+}
+
+.profile__page__follow__button-container {
+  outline: 1px solid $blue;
+}
+
+.follow__button {
+  display: block;
+}
+.profile__page__user__information-container {
+  outline: 1px solid $blue;
+  grid-column: span 1;
+}
+
+.profile__page__user-name {
+  text-transform: capitalize;
+}

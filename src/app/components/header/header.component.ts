@@ -17,7 +17,12 @@ export class HeaderComponent implements OnInit {
   }
 
   isFeedRoute() {
-    return this.router.url === '/feed';
+    let route: boolean = true;
+    if (this.router.url === '/' || this.router.url === '/register') {
+      route = false;
+    }
+
+    return route;
   }
 
   sidepanel(): void {

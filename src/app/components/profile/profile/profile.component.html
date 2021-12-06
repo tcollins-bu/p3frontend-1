@@ -1,58 +1,70 @@
 <!-- <div class="container" *ngIf="targetUser; else loggedOut"> -->
+<div class="profile__page-wrapper">
+  <div class="profile__page__profile-container">
+    <div class="profile__page__profile__img-comtainer">
+      <img
+        [src]="
+          targetUser.photo
+            ? targetUser.photo
+            : 'https://www.w3schools.com/howto/img_avatar.png'
+        "
+        alt="Profile Photo"
+      />
+      <header>
+        <h3 class="profile__page__user-name">
+          {{ targetUser.firstName }} {{ targetUser.middleName }}
+          {{ targetUser.lastName }}
+        </h3>
+      </header>
+      <div class="profile__page__follow__button-container">
+        <span *ngIf="isVisible">
+          <button
+            [ngClass]="{
+              follow: isFollowing == false,
+              unfollow: isFollowing == true
+            }"
+            (click)="onClick()"
+          >
+            {{
+              isFollowing == true
+                ? "Unfollow"
+                : isFollowing == false
+                ? "Follow"
+                : ""
+            }}
+          </button>
+        </span>
 
-<div class="photo">
-  <img
-    [src]="
-      targetUser.photo
-        ? targetUser.photo
-        : 'https://www.w3schools.com/howto/img_avatar.png'
-    "
-    alt="Profile Photo"
-  />
-</div>
-<div>
-  <span *ngIf="isVisible">
-    <button
-      [ngClass]="{
-        follow: isFollowing == false,
-        unfollow: isFollowing == true
-      }"
-      (click)="onClick()"
-    >
-      {{
-        isFollowing == true ? "Unfollow" : isFollowing == false ? "Follow" : ""
-      }}
-    </button>
-  </span>
+        <follow_button
+          class="follow__button"
+          [profileId]
+          [activeUsersId]
+        ></follow_button>
+      </div>
+    </div>
 
-  <follow_button [profileId] [activeUsersId]></follow_button>
-</div>
-<div class="container">
-  <header>
-    <h3>
-      <strong>Name:</strong>
-      {{ targetUser.firstName }} {{ targetUser.middleName }}
-      {{ targetUser.lastName }}
-    </h3>
-  </header>
-  <div>
-    <p>
-      <strong>Job Title:</strong>
-      {{ targetUser.jobTitle }}
-    </p>
-    <p>
-      <strong>Email:</strong>
-      {{ targetUser.email }}
-    </p>
-    <p>
-      <strong>Age:</strong>
-      {{ targetUser.age }}
-    </p>
-    <p>
-      <strong>Gender:</strong>
-      {{ targetUser.gender }}
-    </p>
+    <div class="profile__page__user__information-container">
+      <div class="profile__page__user__bio-container">
+        <div>
+          <p>
+            <strong>Job Title:</strong>
+            {{ targetUser.jobTitle }}
+          </p>
+          <p>
+            <strong>Email:</strong>
+            {{ targetUser.email }}
+          </p>
+          <p>
+            <strong>Age:</strong>
+            {{ targetUser.age }}
+          </p>
+          <p>
+            <strong>Gender:</strong>
+            {{ targetUser.gender }}
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
+  <ng-template #loggedOut> Please login. </ng-template>
 </div>
-
-<ng-template #loggedOut> Please login. </ng-template>
