@@ -53,7 +53,10 @@ export class ProfileComponent implements OnInit {
       followerId: this.activeUsersId,
       followedId: this.profileId,
     };
-    this.checkFollowerStatus(this.activeUsersId, this.profileId);
+    this.checkFollowerStatus(
+      Number(this.route.snapshot.params['userId']),
+      Number(localStorage.getItem('userId'))
+    );
   }
 
   /*
@@ -116,13 +119,13 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  /*
-   * This method toggles whether or not the currently visible profile will be followed
-   * Initially set to false and displaying a '+' currently to represent follow
-   * If clicked, the only current functionality is that the '+' will change to 'Unfollow'
-   * What will still need to occur is:
-   * 1. Add the relevent profile identifier to the relevent database via a post request
-   */
+  // /*
+  //  * This method toggles whether or not the currently visible profile will be followed
+  //  * Initially set to false and displaying a '+' currently to represent follow
+  //  * If clicked, the only current functionality is that the '+' will change to 'Unfollow'
+  //  * What will still need to occur is:
+  //  * 1. Add the relevent profile identifier to the relevent database via a post request
+  //  */
   onClick() {
     console.log('Entering onClick()');
 

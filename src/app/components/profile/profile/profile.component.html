@@ -11,7 +11,7 @@
   />
 </div>
 <div>
-  <span *ngIf="isVisible">
+  <!-- <span *ngIf="isVisible">
     <button
       [ngClass]="{
         follow: isFollowing == false,
@@ -23,7 +23,7 @@
         isFollowing == true ? "Unfollow" : isFollowing == false ? "Follow" : ""
       }}
     </button>
-  </span>
+  </span> -->
 
   <follow_button [profileId] [activeUsersId]></follow_button>
 </div>

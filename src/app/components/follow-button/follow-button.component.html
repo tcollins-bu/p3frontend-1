@@ -1,8 +1,10 @@
-
 <span *ngIf="isVisible">
-    <button [ngClass]="{'follow' : isFollowing == false,
-        'unfollow' : isFollowing == true }"
-        (click)="onClick()">
-        {{isFollowing == true ? 'Unfollow' : (isFollowing == false ? '+' : '')}}
-    </button>
+  <button
+    [ngClass]="{ follow: isFollowing == false, unfollow: isFollowing == true }"
+    (click)="onClick()"
+  >
+    {{
+      isFollowing == true ? "Unfollow" : isFollowing == false ? "Follow" : ""
+    }}
+  </button>
 </span>
