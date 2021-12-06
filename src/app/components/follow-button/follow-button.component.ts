@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./follow-button.component.scss'],
 })
 export class FollowButtonComponent implements OnInit {
-  @Input('profileId') profileId = this.route.snapshot.params['userId'];
+  @Input('profileId') profileId = Number(this.route.snapshot.params['userId']);
   @Input('activeUsersId') activeUsersId = Number(
     localStorage.getItem('userId')
   );
@@ -113,7 +113,7 @@ export class FollowButtonComponent implements OnInit {
         } catch (error) {
           this.isFollowing = false;
           this.follower = {
-            id: -1,
+            id: this.activeUsersId,
             followerId: activeUserId,
             followedId: profileId,
           };

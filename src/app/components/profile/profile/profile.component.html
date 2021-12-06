@@ -35,6 +35,7 @@
           </button>
         </span>
 
+<<<<<<< HEAD
         <follow_button
           class="follow__button"
           [profileId]
@@ -42,6 +43,32 @@
         ></follow_button>
       </div>
     </div>
+=======
+<div class="photo">
+  <img
+    [src]="
+      targetUser.photo
+        ? targetUser.photo
+        : 'https://www.w3schools.com/howto/img_avatar.png'
+    "
+    alt="Profile Photo"
+  />
+</div>
+<div>
+  <!-- <span *ngIf="isVisible">
+    <button
+      [ngClass]="{
+        follow: isFollowing == false,
+        unfollow: isFollowing == true
+      }"
+      (click)="onClick()"
+    >
+      {{
+        isFollowing == true ? "Unfollow" : isFollowing == false ? "Follow" : ""
+      }}
+    </button>
+  </span> -->
+>>>>>>> searchbarRouting
 
     <div class="profile__page__user__information-container">
       <div class="profile__page__user__bio-container">
