@@ -12,6 +12,5 @@ export class SearchBarService {
 
   getUsersList(): Observable<Users[]> {
     return this.httpClient.get<Users[]>(`${this.baseURL}`);
-    console.log('This works');
   }
 }

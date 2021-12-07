@@ -25,7 +25,6 @@ export class FollowerService {
   }
 
   getFollowedByFollowerId(profileId: number): Observable<IFollower[]> {
-    console.log('Entering getFollowedById() with followedId of ' + profileId);
     return this.http.get<IFollower[]>(this.findByFollowedId + profileId);
   }
 
@@ -40,31 +39,20 @@ export class FollowerService {
   }
 
   getFollowerObjectById(follower: IFollower): Observable<IFollower> {
-    console.log('Entering the getFollowerObjectById()');
     return this.http.get<IFollower>(this.findById + follower.id);
   }
 
   addUserToFollowedUsers(follower: IFollower): Observable<any> {
-    console.log('Entering the addUserToFollowedUsers()');
-
     //Creating headers
     const headers = {
       accept: '*/*',
       'Content-Type': 'application/json',
     };
-    console.log(
-      'Adding follower with follwerId: ' +
-        follower.followerId +
-        ' and followedId: ' +
-        follower.followedId
-    );
     const body = JSON.stringify(follower); //Creating Body
     return this.http.post<IFollower>(this.save, body, { headers: headers }); //Sending and returning request
   }
 
   updateAFollowerObject(follower: IFollower): Observable<any> {
-    console.log('Entering updateAFollowerObject()');
-
     //Creating headers
     const headers = {
       accept: '*/*',
@@ -78,8 +66,6 @@ export class FollowerService {
   }
 
   deleteUserFromFollowedUsers(followed: number): Observable<any> {
-    console.log('Entering the deleteUserFromFollowedUsers()');
-
     return this.http.delete<any>(this.delete + followed);
   }
 }

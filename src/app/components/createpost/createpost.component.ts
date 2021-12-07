@@ -24,6 +24,7 @@ export class CreatepostComponent implements OnInit {
     modal();
   }
 
+  // This function is responsible for creating a new post
   createPost() {
     let uId = Number(localStorage.getItem('userId'));
     if (!this.content && !this.image) {

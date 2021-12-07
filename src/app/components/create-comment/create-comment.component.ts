@@ -20,6 +20,7 @@ export class CreateCommentComponent implements OnInit {
     this.getUser();
   }
 
+  // This function submits a new comment to be displayed on a post
   onSubmit() {
     let uId = Number(localStorage.getItem('userId'));
     if (!this.content && !this.image) {
@@ -41,6 +42,7 @@ export class CreateCommentComponent implements OnInit {
     this.image = '';
   }
 
+  //This function gets the user that is currently logged in
   getUser() {
     setTimeout(() => {
       this.uService

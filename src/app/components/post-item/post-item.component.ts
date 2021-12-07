@@ -42,6 +42,7 @@ export class PostItemComponent implements OnInit {
   ) {}
   toggle: boolean = true;
 
+  //Needed for toggling the comments section
   toggleClass() {
     this.toggle = !this.toggle;
   }
@@ -54,6 +55,7 @@ export class PostItemComponent implements OnInit {
     this.postDislikes = [...new Set(this.postDislikes)];
   }
 
+  // Gets the information needed for displaying the correct information on the bage in the correct order
   private getData() {
     this.pService.getPosts().subscribe((posts: Post[]) => {
       this.posts = posts;
@@ -66,6 +68,7 @@ export class PostItemComponent implements OnInit {
     });
   }
 
+  // Gets the information of the user that created the post
   private getUsersInfo() {
     this.uService.getUsers().subscribe((users: Users[]) => {
       this.users = users;
@@ -82,6 +85,7 @@ export class PostItemComponent implements OnInit {
     });
   }
 
+  //Gets the number of likes this post has recieved
   getLikes() {
     this.lService.getLikes().subscribe((likes: Likes[]) => {
       this.likes = likes;
@@ -96,6 +100,7 @@ export class PostItemComponent implements OnInit {
     });
   }
 
+  // Gets the number of dislikes this post has recieved
   getDislikes() {
     this.lService.getDislikes().subscribe((dislikes: Dislikes[]) => {
       this.dislikes = dislikes;
@@ -110,6 +115,7 @@ export class PostItemComponent implements OnInit {
     });
   }
 
+  // Controls what happens
   onLike() {
     let hasLiked: boolean = false;
     let like = {

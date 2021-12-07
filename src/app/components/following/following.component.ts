@@ -26,12 +26,14 @@ export class FollowingComponent implements OnInit {
     }, 500);
   }
 
+  // Gets the ID of the logged in user
   getId() {
     setTimeout(() => {
       this.userId = Number(localStorage.getItem('userId'));
     }, 400);
   }
 
+  //Gets the users that the logged in user is currently following
   getFollowing() {
     this.fService.getFollowers().subscribe((follow) => {
       this.followArr = follow;

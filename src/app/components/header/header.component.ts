@@ -12,10 +12,9 @@ declare const sidepanel: any;
 export class HeaderComponent implements OnInit {
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    console.log(this.router.url);
-  }
+  ngOnInit(): void {}
 
+  //This function checks what page you are currently on and controls which header to show
   isFeedRoute() {
     let route: boolean = true;
     if (this.router.url === '/' || this.router.url === '/register') {

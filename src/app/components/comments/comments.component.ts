@@ -27,9 +27,9 @@ export class CommentsComponent implements OnInit {
   numCommentLikes: number = 0;
   numCommentDislikes: number = 0;
   userId: number = Number(localStorage.getItem('userId'));
-  firstName: string = ''; //localStorage.getItem('firstName');
-  lastName: string = ''; // localStorage.getItem('lastName');
-  fullName: string = ''; //`${this.firstName} ${this.lastName}`;
+  firstName: string = '';
+  lastName: string = '';
+  fullName: string = '';
   photo: string;
   constructor(
     private lService: LikeDislikeService,
@@ -48,6 +48,7 @@ export class CommentsComponent implements OnInit {
     alert();
   }
 
+  // This function gets the information needed to display comments correctly
   getData() {
     this.pService.getPosts().subscribe((posts: Post[]) => {
       this.posts = posts;
@@ -56,11 +57,9 @@ export class CommentsComponent implements OnInit {
       this.getCommentDislikes();
       this.getUsersInfo();
     });
-
-    // console.log(this.commentLikes);
-    // console.log(this.commentDislikes);
   }
 
+  //This function gets the infomation about the logged in user
   private getUsersInfo() {
     this.uService.getUsers().subscribe((users: Users[]) => {
       this.users = users;
@@ -77,6 +76,7 @@ export class CommentsComponent implements OnInit {
     });
   }
 
+  // This function is responsible for displaying the correct number of likes on a comment
   getCommentLikes() {
     this.commentLikes = [];
 
@@ -93,6 +93,7 @@ export class CommentsComponent implements OnInit {
     });
   }
 
+  // This function is responsible for displaying the correct number of dislikes on a comment
   getCommentDislikes() {
     this.commentDislikes = [];
     this.lService.getDislikes().subscribe((dislikes) => {
@@ -108,6 +109,7 @@ export class CommentsComponent implements OnInit {
     });
   }
 
+  // This function controls what happens when the like button is clicked
   onCommentLike() {
     let hasLiked: boolean = false;
     let hasAlreadyDisliked: boolean = false;
@@ -142,6 +144,7 @@ export class CommentsComponent implements OnInit {
     }
   }
 
+  // This function controls what happens when the dislike button is clicked
   onCommentDislike() {
     let hasDisliked: boolean = false;
     let dislike = {
@@ -177,6 +180,7 @@ export class CommentsComponent implements OnInit {
     }
   }
 
+  // This function makes it so the latest comment shows up last
   private filterPosts(posts: Post[]) {
     this.posts = posts.filter((p) => {
       return p.type == 'post';
