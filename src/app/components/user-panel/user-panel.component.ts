@@ -57,9 +57,6 @@ export class UserPanelComponent implements OnInit {
           this.numFollowed++;
         }
       });
-
-      console.log(this.numFollowers);
-      console.log(this.numFollowed);
     });
   }
 }
