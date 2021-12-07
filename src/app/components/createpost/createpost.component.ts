@@ -26,9 +26,6 @@ export class CreatepostComponent implements OnInit {
 
   createPost() {
     let uId = Number(localStorage.getItem('userId'));
-    console.log(uId);
-    console.log(typeof uId);
-
     if (!this.content && !this.image) {
       alert('Please share some content or an image!');
       return;

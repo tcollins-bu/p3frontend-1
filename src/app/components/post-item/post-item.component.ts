@@ -199,11 +199,13 @@ export class PostItemComponent implements OnInit {
 
   private getNumOfComments() {
     let numOfComments = 0;
-    this.comments.forEach((c) => {
+
+    this.comments?.forEach((c) => {
       if (this.post.feedId === c.feedId) {
         numOfComments++;
       }
     });
+
     return numOfComments;
   }
 
