@@ -23,7 +23,6 @@ export class FollowingComponent implements OnInit {
     this.getId();
     setTimeout(() => {
       this.getFollowing();
-      console.log(this.following);
     }, 500);
   }
 

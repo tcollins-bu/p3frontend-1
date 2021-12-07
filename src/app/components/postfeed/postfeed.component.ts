@@ -67,12 +67,11 @@ export class PostfeedComponent implements OnInit {
 
   private filterFollowingPosts() {
     this.followed.forEach((f) => {
-      console.log('called');
       this.followedIdArr.push(f.followedId);
-      console.log(this.followedIdArr);
     });
+    this.followedIdArr.push(this.user.userId);
     this.posts = this.posts.filter((p) => {
-      return this.followedIdArr.includes(p.usersId), this.user.userId;
+      return this.followedIdArr.includes(p.usersId);
     });
   }
 
@@ -81,7 +80,6 @@ export class PostfeedComponent implements OnInit {
       this.followed = following.filter((f) => {
         return f.followerId == Number(localStorage.getItem('userId'));
       });
-      console.log(this.followed);
     });
   }
 
