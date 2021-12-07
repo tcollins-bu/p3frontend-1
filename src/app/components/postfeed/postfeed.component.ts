@@ -72,8 +72,9 @@ export class PostfeedComponent implements OnInit {
       console.log(this.followedIdArr);
     });
     this.posts = this.posts.filter((p) => {
-      return this.followedIdArr.includes(p.usersId), this.user.userId;
+      return this.followedIdArr.includes(p.usersId);
     });
+    console.log(this.posts);
   }
 
   getAllFollowers() {
