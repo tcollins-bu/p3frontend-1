@@ -48,7 +48,7 @@
         <app-comments
           [comment]="comment"
           [post]="post"
-          *ngIf="comment.feedId === post.feedId"
+          *ngIf="comment?.feedId === post?.feedId"
         ></app-comments>
       </div>
     </div>
