@@ -18,10 +18,26 @@ export class SidePanelComponent implements OnInit {
   ngOnInit(): void {}
 
   viewProfile() {
+    function $(el) {
+      return document.querySelector(el);
+    }
+
     this.router.navigate([
       'profile',
       { userId: Number(localStorage.getItem('userId')) },
     ]);
+  }
+
+  closeSidePanel(): void {
+    function $(el) {
+      return document.querySelector(el);
+    }
+
+    const outerWrapper = $('.side__panel-outer-wrapper');
+    const sidepanel = $('.side__panel-wrapper');
+
+    outerWrapper.style.width = '0%';
+    sidepanel.style.width = '0%';
   }
 
   logout(): void {

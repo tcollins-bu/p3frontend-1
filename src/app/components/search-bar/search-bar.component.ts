@@ -34,4 +34,30 @@ export class SearchBarComponent implements OnInit {
       this.users = data;
     });
   }
+
+  showList(): void {
+    function $(el) {
+      return document.querySelector(el);
+    }
+
+    const searchBar = $('.search__bar');
+    const userList = $('.user__list');
+
+    // searchBar.addEventListener('keypress', () => {
+    if (userList.classList.contains('hide')) {
+      userList.classList.remove('hide');
+    }
+    // });
+  }
+
+  clearSearch(): void {
+    function $(el) {
+      return document.querySelector(el);
+    }
+
+    const searchBar = $('.search__bar');
+    const userList = $('.user__list');
+    searchBar.value = '';
+    userList.classList.add('hide');
+  }
 }

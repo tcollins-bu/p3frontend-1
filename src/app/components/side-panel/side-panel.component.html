@@ -5,15 +5,19 @@
       <ul>
         <li>
           <a
-            class="list__item__link"
+            class="list__item__link view-profile-btn"
             [routerLink]="['view-profile', id]"
             routerLinkActive="router-link-active"
+            (click)="closeSidePanel()"
             >View Profile</a
           >
           <span class="underline"></span>
         </li>
         <li>
-          <a class="list__item__link" [routerLink]="['edit-profile']"
+          <a
+            class="list__item__link"
+            [routerLink]="['edit-profile']"
+            (click)="closeSidePanel()"
             >Edit Profile</a
           >
           <span class="underline"></span>

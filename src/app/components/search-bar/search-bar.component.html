@@ -7,12 +7,18 @@
       placeholder="Search MyRev"
       [(ngModel)]="searchName"
       name="userFirst"
+      (click)="showList()"
     />
     <!-- <button type="submit"><i class="fas fa-search"></i></button> -->
   </form>
+
   <div class="user__list">
     <div class="list" *ngFor="let user of users | filter: searchName">
-      <button type="button" (click)="getProfile(user.userId)">
+      <button
+        class="search-query"
+        type="button"
+        (click)="getProfile(user.userId); clearSearch()"
+      >
         {{ user.username }}
       </button>
     </div>

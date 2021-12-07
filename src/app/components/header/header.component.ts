@@ -16,13 +16,17 @@ export class HeaderComponent implements OnInit {
     console.log(this.router.url);
   }
 
-  isFeedRoute() {
+  showHamburger() {
     let route: boolean = true;
     if (this.router.url === '/' || this.router.url === '/register') {
       route = false;
     }
 
     return route;
+  }
+
+  isFeedRoute() {
+    return this.router.url == '/feed';
   }
 
   sidepanel(): void {
@@ -34,6 +38,7 @@ export class HeaderComponent implements OnInit {
     const sidepanel = $('.side__panel-wrapper');
     const closeBtn = $('.close-side-panel');
     const logoutBTN = $('.logoutBTN');
+    const viewProfilBTN = document.querySelector('.view-profile-btn');
 
     const links = document.querySelectorAll('.list__item__link');
     const underlines = document.querySelectorAll('.underline');

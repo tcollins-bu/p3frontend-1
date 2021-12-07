@@ -35,6 +35,16 @@
   }
 }
 
+.header__navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  & > li > a {
+    padding: 0.5rem;
+  }
+}
+
 .hamburger-container {
   height: 2rem;
   width: 2rem;
@@ -51,4 +61,10 @@
     height: 0.4rem;
     background-color: $white;
   }
+}
+
+.active__page {
+  font-size: 1.25rem;
+  background-color: $orange;
+  color: $white;
 }

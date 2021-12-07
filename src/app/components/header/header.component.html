@@ -1,6 +1,6 @@
 <div class="header-container">
   <header class="header">
-    <img src="assets/Img/Logo/rev-logo.png" alt="" />
+    <!-- <img src="assets/Img/Logo/rev-logo.png" alt="" /> -->
     <!-- <div *ngIf="isFeedRoute()" class="header__search-container">
       <form class="header__search__form" action="">
         <input
@@ -17,11 +17,15 @@
         </div>
       </div>
     </div> -->
-    <app-search-bar *ngIf="isFeedRoute()"></app-search-bar>
-    <h1 class="header__text">MyRev</h1>
 
+    <h1 class="header__text"><a routerLink="/">MyRev</a></h1>
+
+    <ul class="header__navbar">
+      <li><a href="#" class="navbar__item active__page">Home</a></li>
+    </ul>
+    <app-search-bar *ngIf="isFeedRoute()"></app-search-bar>
     <div
-      *ngIf="isFeedRoute()"
+      *ngIf="showHamburger()"
       (click)="sidepanel()"
       class="hamburger-container"
     >
