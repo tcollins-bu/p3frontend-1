@@ -41,7 +41,6 @@ export class ProfileComponent implements OnInit {
     this.temp = this.profileService.getUserById(+this.userId);
     this.temp.subscribe((data: {}) => {
       this.targetUser = data;
-      console.log(this.targetUser.userId);
       this.profileId = this.userId;
     });
     this.currentUser = this.tokenService.getUser();
@@ -84,7 +83,6 @@ export class ProfileComponent implements OnInit {
           };
           return false;
         } finally {
-          console.log('Async operation complete. Checking visibility.');
           this.isVisible = this.getVisibility(
             this.profileId,
             this.activeUsersId
@@ -92,7 +90,6 @@ export class ProfileComponent implements OnInit {
         }
       });
 
-    console.log('getFollowedById() completed, waiting for database response');
     return false;
   }
 
@@ -102,19 +99,11 @@ export class ProfileComponent implements OnInit {
    * If they are viewing another's profile, the button visibility is set to true
    */
   getVisibility(profileId: number, activeUsersId: number): boolean {
-    console.log('Entering getVisibility()');
-    console.log('id: ' + this.follower.id);
-    console.log('profileId: ' + profileId);
-    console.log('activeUserId: ' + activeUsersId);
-
     if (activeUsersId == profileId) {
       //compare active session id to Profile id
-      console.log(
-        'User is viewing their own profile, setting button visibility to false.'
-      );
+
       return false; //set isVisible property to false (button not visible)
     } else {
-      console.log('Setting button visibility to true.');
       return true; //set is Visible property to true (button visible)
     }
   }
@@ -127,13 +116,7 @@ export class ProfileComponent implements OnInit {
   //  * 1. Add the relevent profile identifier to the relevent database via a post request
   //  */
   onClick() {
-    console.log('Entering onClick()');
-
     if (!this.isFollowing) {
-      console.log(
-        'sending to the addUserToFollowedUsers() follower service method'
-      );
-      console.log(this.follower);
       this.followerService
         .addUserToFollowedUsers(this.follower)
         .subscribe((action) => {
@@ -143,10 +126,6 @@ export class ProfileComponent implements OnInit {
           );
         });
     } else {
-      console.log(
-        'sending to the deleteUserFromFollowedUsers() follower service method with id ' +
-          this.follower.id
-      );
       this.followerService
         .deleteUserFromFollowedUsers(this.follower.id)
         .subscribe((action) => {

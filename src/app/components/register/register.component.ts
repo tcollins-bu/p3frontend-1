@@ -30,7 +30,6 @@ export class RegisterComponent implements OnInit {
       .register(firstName, lastName, username, email, password)
       .subscribe(
         (data) => {
-          console.log('data: ' + data);
           this.isSuccessful = true;
           this.isSignUpFailed = false;
           this.router.navigate(['']);
