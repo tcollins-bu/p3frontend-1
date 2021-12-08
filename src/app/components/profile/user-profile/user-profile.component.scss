@@ -16,6 +16,19 @@
   box-shadow: $heavy-box-shadow;
 }
 
+.user__profile__page-header {
+  & > img {
+    max-height: 20rem;
+    border-radius: 50%;
+    border: 1rem solid $orange;
+    margin-bottom: 1rem;
+  }
+
+  & > h1 {
+    text-align: center;
+  }
+}
+
 .user__profile__page-name {
   text-transform: capitalize;
   font-size: 2rem;

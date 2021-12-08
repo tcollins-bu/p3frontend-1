@@ -20,7 +20,7 @@
 
     <h1 class="header__text"><a routerLink="/">MyRev</a></h1>
 
-    <ul class="header__navbar">
+    <ul *ngIf="!isNotRegister()" class="header__navbar">
       <li><a href="#" class="navbar__item active__page">Home</a></li>
     </ul>
     <app-search-bar *ngIf="isFeedRoute()"></app-search-bar>

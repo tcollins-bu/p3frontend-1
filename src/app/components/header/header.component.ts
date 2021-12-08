@@ -23,6 +23,15 @@ export class HeaderComponent implements OnInit {
     return route;
   }
 
+  isNotRegister() {
+    let route = false;
+    if (this.router.url === '/' || this.router.url === '/register') {
+      route = true;
+    }
+
+    return route;
+  }
+
   isFeedRoute() {
     return this.router.url == '/feed';
   }
