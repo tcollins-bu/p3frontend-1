@@ -21,19 +21,26 @@
   font-size: 2rem;
   font-family: "FuturaHeavy";
 }
-
-h1 {
-  margin: 10px, 10px, 0px, 20px;
+.user__profile__page-bio {
+  margin: 1rem 0rem;
+  font-size: 1.5rem;
 }
 
-button {
-  background-color: aqua;
-  border: 1px solid black;
-  margin-top: 10px;
-  border-radius: 5px;
-  padding: 5px;
-}
+.user__profile__page-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 0.75rem;
+  width: 100%;
 
-img {
-  max-height: 400px;
+  & > button {
+    font-size: 1.25rem;
+    background-color: $orange;
+    border-radius: 0.325rem;
+    padding: 0.5rem;
+    color: $white;
+
+    &:hover {
+      background-color: $light-gray;
+    }
+  }
 }
